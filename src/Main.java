@@ -7,6 +7,8 @@ public class Main {
     SmartKitchen myKitchen = new SmartKitchen(ramtons, mika, lg);
     SmartKitchen newKitchen = new SmartKitchen();
 
+    newKitchen.pourMilk();
+
     myKitchen.doKitchenWork();
   }
 }
