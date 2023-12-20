@@ -3,11 +3,6 @@ public class SmartKitchen {
   private DishWasher dishWasher;
   private Refrigerator iceBox;
 
-  public SmartKitchen(CoffeeMaker brewMaster, DishWasher dishWasher, Refrigerator iceBox) {
-    this.brewMaster = brewMaster;
-    this.dishWasher = dishWasher;
-    this.iceBox = iceBox;
-  }
 
   public SmartKitchen() {
     brewMaster = new CoffeeMaker();
@@ -15,28 +10,30 @@ public class SmartKitchen {
     dishWasher = new DishWasher();
   }
 
-  public void addWater() {
-    brewMaster.setHasWorkToDo(true);
-    brewMaster.brewCoffee();
-    System.out.println("Making Coffee");
+
+  public CoffeeMaker getBrewMaster() {
+    return brewMaster;
   }
 
-  public void pourMilk() {
-    iceBox.setHasWorkToDo(true);
-    iceBox.orderFood();
-    System.out.println("Pouring Milk");
+  public DishWasher getDishWasher() {
+    return dishWasher;
   }
 
-  public void loadDishwasher() {
-    dishWasher.setHasWorkToDo(true);
-    dishWasher.doDishes();
-    System.out.println("Loading the dish washer");
+  public Refrigerator getIceBox() {
+    return iceBox;
   }
+
+  public void setKitchenState(boolean refrigeratorState, boolean dishWasherState, boolean coffeeMakerState) {
+    iceBox.setHasWorkToDo(refrigeratorState);
+    dishWasher.setHasWorkToDo(dishWasherState);
+    brewMaster.setHasWorkToDo(coffeeMakerState);
+  }
+
 
 
   public void doKitchenWork() {
-    addWater();
-    pourMilk();
-    loadDishwasher();
+    iceBox.orderFood();
+    dishWasher.doDishes();
+    brewMaster.brewCoffee();
   }
 }
